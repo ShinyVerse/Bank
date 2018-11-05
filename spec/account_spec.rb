@@ -8,6 +8,11 @@ describe Account do
       expect(account.balance).to eq 0
       expect(account.history.length).to eq 0
     end
+
+    it 'stores transaction information' do
+      account.deposit(15)
+      expect(account.history.length).to eq 1
+    end
   end
 
   describe '#deposit' do
@@ -17,7 +22,7 @@ describe Account do
     end
 
     it 'does nothing if an integer is not provided' do
-      account.deposit("Hello")
+      account.deposit('Hello')
       expect(account.balance).to eq 0
     end
   end
@@ -38,8 +43,7 @@ describe Account do
     end
 
     it 'gives the user a message if insuffient funds' do
-      expect(account.withdraw(25)).to eq "Insuffient funds"
+      expect(account.withdraw(25)).to eq 'Insuffient funds'
     end
-
   end
 end
