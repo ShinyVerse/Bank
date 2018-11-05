@@ -7,11 +7,23 @@ class Account
   end
 
   def deposit amount
-    top_up(amount)
+    top_up(amount) if amount.is_a? Integer
   end
 
+  def withdraw amount
+    return unless amount.is_a? Integer
+    if (balance - amount) >= 0
+      remove_amount(amount)
+    else
+      "Insuffient funds"
+    end
+  end
 
   private
+
+  def remove_amount amount
+    @balance -= amount
+  end
 
   def top_up amount
     @balance += amount
