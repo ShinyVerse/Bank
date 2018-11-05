@@ -1,7 +1,13 @@
 require 'account'
 
 describe Account do
-  let(:statement) { double('statement', deposit: true, withdraw: true) }
+  log1 = {
+    date: "12/04/12",
+    credit: 30,
+    debit: '',
+    balance: 1000 }
+  let(:statement) { double('statement', deposit: true, withdraw: true,
+    history: [log1]) }
   let(:account) { described_class.new(statement) }
 
   describe 'An account instance' do
@@ -39,6 +45,18 @@ describe Account do
 
     it 'gives the user a message if insuffient funds' do
       expect(account.withdraw(25)).to eq 'Insuffient funds'
+    end
+  end
+
+  describe '#print' do
+    before(:each) do
+      account.deposit(20)
+    end
+
+    it 'prints out a pretty statement for the user' do
+        #expect{account.print}.to output("Hello\n").to_stdout
+
+      expect{account.print}.to output("Date: 12/04/12\nCredit: 30\nDebit: \nBalance: 1000\n").to_stdout
     end
   end
 end
