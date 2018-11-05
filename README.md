@@ -24,3 +24,12 @@ So I can see my monies
 ```
 
 ## Running Tests
+
+On your command line, when located in the Bank directory, run this command:
+```
+rspec
+```
+For a specific file run rspec command as so:
+```
+rspec spec/file_you_wish_to_test.rb
+```
