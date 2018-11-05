@@ -2,12 +2,15 @@ require 'account'
 
 describe Account do
   log1 = {
-    date: "12/04/12",
+    date: '12/04/12',
     credit: 30,
     debit: '',
-    balance: 1000 }
-  let(:statement) { double('statement', deposit: true, withdraw: true,
-    history: [log1]) }
+    balance: 1000
+  }
+  let(:statement) do
+    double('statement', deposit: true, withdraw: true,
+                        history: [log1])
+  end
   let(:account) { described_class.new(statement) }
 
   describe 'An account instance' do
@@ -54,7 +57,10 @@ describe Account do
     end
 
     it 'prints out a pretty statement for the user' do
-      expect{account.print}.to output("Date: 12/04/12\nCredit: 30\nDebit: \nBalance: 1000\n").to_stdout
+      expect { account.print }.to output("Date: 12/04/12\n"\
+                                         "Credit: 30\n"\
+                                         "Debit: \n"\
+                                         "Balance: 1000\n").to_stdout
     end
   end
 end

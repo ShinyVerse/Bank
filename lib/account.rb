@@ -6,7 +6,7 @@ class Account
     @acc_statement = statement
   end
 
-  def deposit(amount, date = Time.now.strftime('%d/%m/%Y') )
+  def deposit(amount, date = Time.now.strftime('%d/%m/%Y'))
     top_up(amount) if amount.is_a? Integer
     log_transaction(amount, 'deposit', date)
   end
@@ -22,17 +22,10 @@ class Account
     end
   end
 
-  def print
-     acc_statement.history.each do |entry|
-       puts "Date: #{entry[:date]}"
-       puts "Credit: #{entry[:credit]}"
-       puts "Debit: #{entry[:debit]}"
-       puts "Balance: #{entry[:balance]}"
-
-     end
-  end
+  def print; end
 
   private
+
   attr_reader :acc_statement
 
   def remove_amount(amount)
