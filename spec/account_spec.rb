@@ -11,7 +11,10 @@ describe Account do
     double('statement', deposit: true, withdraw: true,
                         history: [log1])
   end
-  let(:account) { described_class.new(statement) }
+  let(:printer) do
+    double('printer', print: true)
+  end
+  let(:account) { described_class.new(statement, printer) }
 
   describe 'An account instance' do
     it 'has a balance' do
@@ -20,7 +23,7 @@ describe Account do
   end
 
   describe '#deposit' do
-    it 'allows user to deposit money into their accound' do
+    it 'allows user to deposit money into their account' do
       account.deposit(5)
       expect(account.balance).to eq 5
     end
@@ -51,16 +54,14 @@ describe Account do
     end
   end
 
-  describe '#print' do
+  describe '#print_statement' do
     before(:each) do
       account.deposit(20)
     end
 
     it 'prints out a pretty statement for the user' do
-      expect { account.print }.to output("Date: 12/04/12\n"\
-                                         "Credit: 30\n"\
-                                         "Debit: \n"\
-                                         "Balance: 1000\n").to_stdout
+      expect(account.print_statement).to eq true
+      # expect { account.print_statement([log1]) }.to
     end
   end
 end

@@ -1,9 +1,10 @@
 # Allows users to hold accounts
 class Account
-  attr_reader :balance, :acc_statement
-  def initialize(statement = Statement.new)
+  attr_reader :balance, :acc_statement, :printer
+  def initialize(statement = Statement.new, printer = Printer.new)
     @balance = 0
     @acc_statement = statement
+    @printer = printer
   end
 
   def deposit(amount, date = Time.now.strftime('%d/%m/%Y'))
@@ -22,7 +23,9 @@ class Account
     end
   end
 
-  def print; end
+  def print_statement
+    printer.print(acc_statement.history)
+  end
 
   private
 

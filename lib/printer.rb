@@ -11,6 +11,7 @@ class Printer
     end
   end
 
+private
   def isEmptyStr?(entry)
     entry == ''
   end
