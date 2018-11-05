@@ -9,5 +9,4 @@ describe Account do
       expect(account.history.length).to eq 0
     end
   end
-
 end

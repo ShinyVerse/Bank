@@ -1,3 +1,4 @@
+# Allows users to hold accounts
 class Account
   attr_reader :balance, :history
   def initialize

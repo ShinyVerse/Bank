@@ -1,8 +1,9 @@
-source "https://rubygems.org"
+source 'https://rubygems.org'
 
 gem 'bundler', '~> 1.11', '>= 1.11.2'
 
 group :test do
-  gem 'rubocop'
   gem 'rspec'
+  gem 'rubocop'
+  gem 'simplecov', '~> 0.16.1'
 end
