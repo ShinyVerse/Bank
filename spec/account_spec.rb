@@ -1,7 +1,7 @@
 require 'account'
 
 describe Account do
-  let(:statement) { double('statement', :deposit => true, withdraw: true) }
+  let(:statement) { double('statement', deposit: true, withdraw: true) }
   let(:account) { described_class.new(statement) }
 
   describe 'An account instance' do

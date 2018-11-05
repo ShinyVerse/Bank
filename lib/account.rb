@@ -1,7 +1,7 @@
 # Allows users to hold accounts
 class Account
   attr_reader :balance, :acc_statement
-  def initialize(statement = Statement.new())
+  def initialize(statement = Statement.new)
     @balance = 0
     @acc_statement = statement
   end
@@ -35,9 +35,9 @@ class Account
   def log_transaction(amount, type, time = Time.now)
     date = time.strftime('%d/%m/%Y')
     if type == 'deposit'
-      @acc_statement.deposit(amount, @balance, date )
+      @acc_statement.deposit(amount, @balance, date)
     elsif type == 'withdraw'
-      @acc_statement.withdraw(amount, @balance, date )
+      @acc_statement.withdraw(amount, @balance, date)
     end
   end
 end

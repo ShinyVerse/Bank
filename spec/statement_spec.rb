@@ -1,7 +1,7 @@
 require 'statement'
 
 describe Statement do
-  let(:statement) { described_class.new}
+  let(:statement) { described_class.new }
 
   describe 'Statement initalization' do
     it 'starts with a blank history' do
@@ -11,11 +11,11 @@ describe Statement do
 
   describe '#deposit' do
     it 'expects to log a deposit' do
-      statement.deposit(30, 1030, "12/04/12")
+      statement.deposit(30, 1030, '12/04/12')
       expect(statement.history).to include (
-        { date: "12/04/12",
+        { date: '12/04/12',
           credit: 30,
-          debit: "",
+          debit: '',
           balance: 1030 }
       )
     end
@@ -23,10 +23,10 @@ describe Statement do
 
   describe '#withdraw' do
     it 'expects to log a withdrawal' do
-      statement.withdraw(30, 1000, "12/04/12")
+      statement.withdraw(30, 1000, '12/04/12')
       expect(statement.history).to include (
-        { date: "12/04/12",
-          credit: "",
+        { date: '12/04/12',
+          credit: '',
           debit: 30,
           balance: 1000 }
       )
