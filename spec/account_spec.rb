@@ -9,4 +9,11 @@ describe Account do
       expect(account.history.length).to eq 0
     end
   end
+
+  describe '#deposit' do
+    it 'allows user to deposit money into their accound' do
+      account.deposit(5)
+      expect(account.balance).to eq 5
+    end
+  end
 end

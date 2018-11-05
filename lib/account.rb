@@ -5,4 +5,15 @@ class Account
     @balance = 0
     @history = []
   end
+
+  def deposit amount
+    top_up(amount)
+  end
+
+
+  private
+
+  def top_up amount
+    @balance += amount
+  end
 end
