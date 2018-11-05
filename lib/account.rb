@@ -1,9 +1,9 @@
 # Allows users to hold accounts
 class Account
   attr_reader :balance, :history
-  def initialize
+  def initialize(statement = Statement.new)
     @balance = 0
-    @history = []
+    @history = statement.history
   end
 
   def deposit(amount)
