@@ -1,10 +1,11 @@
 require 'account'
 
 describe Account do
-  let(:account) { described_class.new }
+  let(:statement) { double('statement', :deposit => true, withdraw: true) }
+  let(:account) { described_class.new(statement) }
 
   describe 'An account instance' do
-    it 'has a history and balance' do
+    it 'has a balance' do
       expect(account.balance).to eq 0
     end
   end
