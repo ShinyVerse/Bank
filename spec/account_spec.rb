@@ -54,8 +54,6 @@ describe Account do
     end
 
     it 'prints out a pretty statement for the user' do
-        #expect{account.print}.to output("Hello\n").to_stdout
-
       expect{account.print}.to output("Date: 12/04/12\nCredit: 30\nDebit: \nBalance: 1000\n").to_stdout
     end
   end
