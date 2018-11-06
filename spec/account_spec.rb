@@ -28,11 +28,6 @@ describe Account do
       expect(account.balance).to eq 5
     end
 
-    it 'does nothing if an integer is not provided' do
-      account.deposit('Hello')
-      expect(account.balance).to eq 0
-    end
-
     it 'gives message of insuffient funds if user enters negative, 0 or non-Int' do
       expect(account.deposit(0)).to eq "Insuffient funds"
       expect(account.deposit(-5)).to eq "Insuffient funds"
