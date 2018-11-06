@@ -13,13 +13,11 @@ class Account
   end
 
   def withdraw(amount, date = Time.now.strftime('%d/%m/%Y'))
-    return unless amount.is_a? Integer
-
-    if (balance - amount) >= 0
+    if ( !amount.is_a?(Integer) || amount <= 0 || balance < amount )
+      return 'Insuffient funds'
+    elsif (balance - amount) >= 0
       remove_amount(amount)
       log_transaction(amount, 'withdraw', date)
-    else
-      'Insuffient funds'
     end
   end
 

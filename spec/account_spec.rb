@@ -52,6 +52,11 @@ describe Account do
     it 'gives the user a message if insuffient funds' do
       expect(account.withdraw(25)).to eq 'Insuffient funds'
     end
+
+    it 'gives message insuffient funds if entered in 0, negative' do
+      expect(account.withdraw(0)).to eq "Insuffient funds"
+      expect(account.withdraw(-5)).to eq "Insuffient funds"
+    end
   end
 
   describe '#print_statement' do
