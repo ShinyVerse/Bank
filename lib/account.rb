@@ -13,6 +13,7 @@ class Account
     else
       top_up(amount)
       log_transaction(amount, 'deposit', date)
+      puts "Deposited: £#{format("%.2f",amount)}"
     end
   end
 
@@ -22,11 +23,13 @@ class Account
     elsif (balance - amount) >= 0
       remove_amount(amount)
       log_transaction(amount, 'withdraw', date)
+      puts "Withdrew: £#{format("%.2f",amount)}"
     end
   end
 
   def print_statement
     printer.print(acc_statement.history)
+    return true
   end
 
   private

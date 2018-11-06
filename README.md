@@ -35,7 +35,7 @@ rspec spec/file_you_wish_to_test.rb
 ```
 
 ## Run in IRB
-
+Require the files
 ```
 require './lib/account.rb'
 require './lib/statement.rb'
