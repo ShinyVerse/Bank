@@ -32,5 +32,9 @@ describe Account do
       expect{account.withdraw(50)}.to output("Insuffient funds\n").to_stdout
     end
 
+    it 'returns a statement if user asks for it' do
+      account.deposit(30, "12/04/12")
+      expect{account.print_statement}.to output("date  || credit || debit || balance \n12/04/12 || 30.00 ||  || 30.00\n").to_stdout
+    end
   end
 end
