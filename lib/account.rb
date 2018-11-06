@@ -8,7 +8,7 @@ class Account
   end
 
   def deposit(amount, date = Time.now.strftime('%d/%m/%Y'))
-    if !amount.is_a?(Integer) && !amount.is_a?(Float) || amount <= 0
+    if illegal_entry? amount
       'Insuffient funds'
     else
       top_up(amount)
@@ -17,7 +17,7 @@ class Account
   end
 
   def withdraw(amount, date = Time.now.strftime('%d/%m/%Y'))
-    if !amount.is_a?(Integer) && !amount.is_a?(Float) || amount <= 0 || balance < amount
+    if (illegal_entry? amount) || balance < amount
       'Insuffient funds'
     elsif (balance - amount) >= 0
       remove_amount(amount)
@@ -45,5 +45,9 @@ class Account
     elsif type == 'withdraw'
       @acc_statement.withdraw(amount, @balance, date)
     end
+  end
+
+  def illegal_entry? amount
+    !amount.is_a?(Integer) && !amount.is_a?(Float) || amount <= 0
   end
 end
