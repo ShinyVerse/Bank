@@ -35,6 +35,10 @@ describe Account do
       expect(account.balance).to eq 0
     end
 
+    it 'allows float numbers' do
+      account.deposit(5.50);
+      expect(account.balance).to eq 5.50
+    end
   end
 
   describe '#withdraw' do

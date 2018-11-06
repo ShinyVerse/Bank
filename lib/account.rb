@@ -8,7 +8,7 @@ class Account
   end
 
   def deposit(amount, date = Time.now.strftime('%d/%m/%Y'))
-    if ( !amount.is_a?(Integer) || amount <= 0 )
+    if ( !amount.is_a?(Integer) && !amount.is_a?(Float) || amount <= 0 )
       return 'Insuffient funds'
     else
     top_up(amount)
