@@ -50,6 +50,10 @@ describe Account do
       account.withdraw(5)
       expect(account.balance).to eq 15
     end
+    it 'allows float numbers' do
+      account.withdraw(4.50);
+      expect(account.balance).to eq 15.50
+    end
 
     it 'gives the user a message if insuffient funds' do
       expect(account.withdraw(25)).to eq 'Insuffient funds'
