@@ -9,7 +9,7 @@ class Account
 
   def deposit(amount, date = Time.now.strftime('%d/%m/%Y'))
     if illegal_entry? amount
-      'Insuffient funds'
+      puts 'Unexpected entry'
     else
       top_up(amount)
       log_transaction(amount, 'deposit', date)
@@ -18,8 +18,10 @@ class Account
   end
 
   def withdraw(amount, date = Time.now.strftime('%d/%m/%Y'))
-    if (illegal_entry? amount) || balance < amount
-      'Insuffient funds'
+    if illegal_entry? amount
+      puts 'Unexpected entry'
+    elsif  balance < amount
+      puts 'Insuffient funds'
     elsif (balance - amount) >= 0
       remove_amount(amount)
       log_transaction(amount, 'withdraw', date)

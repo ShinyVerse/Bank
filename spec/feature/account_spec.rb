@@ -1,0 +1,36 @@
+require 'account'
+require 'statement'
+require 'printer'
+
+describe Account do
+  let(:account) { described_class.new }
+
+  describe 'User can' do
+    it 'have an account' do
+      expect(account.balance).to eq 0
+    end
+
+    it 'can deposit cash into their account' do
+      expect{account.deposit(5.50)}.to change{account.balance}.by(5.5)
+      expect{account.deposit(5.50)}.to output("Deposited: £5.50\n").to_stdout
+    end
+
+    it "can withdraw money from an account with a balance" do
+      account.deposit(15)
+      expect{account.withdraw(5)}.to change{account.balance}.by(-5)
+      expect{account.withdraw(5)}.to output("Withdrew: £5.00\n").to_stdout
+    end
+
+    it "returns 'Insuffient funds' if user enters invalid or illegal amount" do
+      expect{account.deposit("WRONG")}.to output("Unexpected entry\n").to_stdout
+      expect{account.withdraw("WRONG")}.to output("Unexpected entry\n").to_stdout
+      expect{account.deposit(0)}.to output("Unexpected entry\n").to_stdout
+      expect{account.deposit(-50)}.to output("Unexpected entry\n").to_stdout
+    end
+
+    it "returns 'Insuffient funds' if not enough funds in account" do
+      expect{account.withdraw(50)}.to output("Insuffient funds\n").to_stdout
+    end
+
+  end
+end

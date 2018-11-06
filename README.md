@@ -29,9 +29,15 @@ On your command line, when located in the Bank directory, run this command:
 ```
 rspec
 ```
-For a specific file run rspec command as so:
+### Individual Unit Tests
+For a specific file run rspec command as so
 ```
-rspec spec/file_you_wish_to_test.rb
+rspec spec/unit/file_you_wish_to_test.rb
+```
+### Feature Test
+To run feature tests run this command
+```
+rspec spec/feature/
 ```
 
 ## Run in IRB
