@@ -8,9 +8,9 @@ class Statement
   def deposit(amount, current_balance, transaction_date)
     @history.unshift(
       date: transaction_date,
-      credit: amount,
+      credit: format("%.2f",amount),
       debit: '',
-      balance: current_balance
+      balance: format("%.2f",current_balance)
     )
   end
 
@@ -18,8 +18,8 @@ class Statement
     @history.unshift(
       date: transaction_date,
       credit: '',
-      debit: amount,
-      balance: current_balance
+      debit: format("%.2f",amount),
+      balance: format("%.2f",current_balance)
     )
   end
 end

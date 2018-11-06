@@ -13,13 +13,12 @@ describe Printer do
     debit: 50,
     balance: 950
   }
-  history_log = [entry1]
   two_entries_log = [entry1, entry2]
 
   let(:printer) { described_class.new }
   describe '#print' do
     it 'displays information nicely for the user (one entry)' do
-      expect { printer.print(historyLog) }.to output("  date  || credit || debit || balance \n   12/04/12 ||30 || ||1000    \n").to_stdout
+      expect { printer.print([entry1]) }.to output("  date  || credit || debit || balance \n   12/04/12 ||30 || ||1000    \n").to_stdout
     end
 
     it 'displays two entries' do
