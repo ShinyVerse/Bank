@@ -32,6 +32,7 @@ describe Account do
       account.deposit('Hello')
       expect(account.balance).to eq 0
     end
+
   end
 
   describe '#withdraw' do
@@ -44,18 +45,15 @@ describe Account do
       expect(account.balance).to eq 15
     end
 
-    it 'does nothing if given amount is not an integer' do
-      account.withdraw({})
-      expect(account.balance).to eq 20
-    end
-
     it 'gives the user a message if insuffient funds' do
       expect(account.withdraw(25)).to eq 'Insuffient funds'
     end
 
-    it 'gives message insuffient funds if entered in 0, negative' do
+    it 'gives message insuffient funds if entered in 0, negative or non-Int' do
       expect(account.withdraw(0)).to eq "Insuffient funds"
       expect(account.withdraw(-5)).to eq "Insuffient funds"
+      expect(account.withdraw({})).to eq "Insuffient funds"
+      expect(account.balance).to eq 20
     end
   end
 
