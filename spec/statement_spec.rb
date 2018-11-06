@@ -15,13 +15,13 @@ describe Statement do
       end
       it 'by adding the newest statement into first position' do
         expect(statement.history).to eq([{ date: '14/04/12',
-          credit: 30,
-          debit: '',
-          balance: 1060 },
-          { date: '12/04/12',
-            credit: 30,
-            debit: '',
-            balance: 1030 }])
+                                           credit: 30,
+                                           debit: '',
+                                           balance: 1060 },
+                                         { date: '12/04/12',
+                                           credit: 30,
+                                           debit: '',
+                                           balance: 1030 }])
       end
     end
   end

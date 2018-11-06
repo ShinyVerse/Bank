@@ -8,17 +8,17 @@ class Account
   end
 
   def deposit(amount, date = Time.now.strftime('%d/%m/%Y'))
-    if ( !amount.is_a?(Integer) && !amount.is_a?(Float) || amount <= 0 )
-      return 'Insuffient funds'
+    if !amount.is_a?(Integer) && !amount.is_a?(Float) || amount <= 0
+      'Insuffient funds'
     else
-    top_up(amount)
-    log_transaction(amount, 'deposit', date)
-  end
+      top_up(amount)
+      log_transaction(amount, 'deposit', date)
+    end
   end
 
   def withdraw(amount, date = Time.now.strftime('%d/%m/%Y'))
-    if ( !amount.is_a?(Integer) && !amount.is_a?(Float) || amount <= 0 || balance < amount )
-      return 'Insuffient funds'
+    if !amount.is_a?(Integer) && !amount.is_a?(Float) || amount <= 0 || balance < amount
+      'Insuffient funds'
     elsif (balance - amount) >= 0
       remove_amount(amount)
       log_transaction(amount, 'withdraw', date)
@@ -30,8 +30,6 @@ class Account
   end
 
   private
-
-  attr_reader :acc_statement
 
   def remove_amount(amount)
     @balance -= amount

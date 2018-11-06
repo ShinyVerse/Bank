@@ -33,3 +33,15 @@ For a specific file run rspec command as so:
 ```
 rspec spec/file_you_wish_to_test.rb
 ```
+
+## Run in IRB
+
+```
+require './lib/account.rb'
+require './lib/statement.rb'
+require './lib/printer.rb'
+
+acc = Account.new
+acc.deposit(50)
+acc.print_statement
+```

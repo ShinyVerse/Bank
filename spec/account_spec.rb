@@ -29,14 +29,14 @@ describe Account do
     end
 
     it 'gives message of insuffient funds if user enters negative, 0 or non-Int' do
-      expect(account.deposit(0)).to eq "Insuffient funds"
-      expect(account.deposit(-5)).to eq "Insuffient funds"
-      expect(account.deposit({})).to eq "Insuffient funds"
+      expect(account.deposit(0)).to eq 'Insuffient funds'
+      expect(account.deposit(-5)).to eq 'Insuffient funds'
+      expect(account.deposit({})).to eq 'Insuffient funds'
       expect(account.balance).to eq 0
     end
 
     it 'allows float numbers' do
-      account.deposit(5.50);
+      account.deposit(5.50)
       expect(account.balance).to eq 5.50
     end
   end
@@ -51,7 +51,7 @@ describe Account do
       expect(account.balance).to eq 15
     end
     it 'allows float numbers' do
-      account.withdraw(4.50);
+      account.withdraw(4.50)
       expect(account.balance).to eq 15.50
     end
 
@@ -60,9 +60,9 @@ describe Account do
     end
 
     it 'gives message insuffient funds if entered in 0, negative or non-Int' do
-      expect(account.withdraw(0)).to eq "Insuffient funds"
-      expect(account.withdraw(-5)).to eq "Insuffient funds"
-      expect(account.withdraw({})).to eq "Insuffient funds"
+      expect(account.withdraw(0)).to eq 'Insuffient funds'
+      expect(account.withdraw(-5)).to eq 'Insuffient funds'
+      expect(account.withdraw({})).to eq 'Insuffient funds'
       expect(account.balance).to eq 20
     end
   end
@@ -74,7 +74,6 @@ describe Account do
 
     it 'prints out a pretty statement for the user' do
       expect(account.print_statement).to eq true
-      # expect { account.print_statement([log1]) }.to
     end
   end
 end
