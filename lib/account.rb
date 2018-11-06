@@ -8,8 +8,12 @@ class Account
   end
 
   def deposit(amount, date = Time.now.strftime('%d/%m/%Y'))
-    top_up(amount) if amount.is_a? Integer
+    if ( !amount.is_a?(Integer) || amount <= 0 )
+      return 'Insuffient funds'
+    else
+    top_up(amount)
     log_transaction(amount, 'deposit', date)
+  end
   end
 
   def withdraw(amount, date = Time.now.strftime('%d/%m/%Y'))

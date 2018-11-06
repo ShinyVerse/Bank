@@ -33,6 +33,13 @@ describe Account do
       expect(account.balance).to eq 0
     end
 
+    it 'gives message of insuffient funds if user enters negative, 0 or non-Int' do
+      expect(account.deposit(0)).to eq "Insuffient funds"
+      expect(account.deposit(-5)).to eq "Insuffient funds"
+      expect(account.deposit({})).to eq "Insuffient funds"
+      expect(account.balance).to eq 0
+    end
+
   end
 
   describe '#withdraw' do
