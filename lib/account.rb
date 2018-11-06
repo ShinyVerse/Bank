@@ -47,7 +47,7 @@ class Account
     end
   end
 
-  def illegal_entry? amount
+  def illegal_entry?(amount)
     !amount.is_a?(Integer) && !amount.is_a?(Float) || amount <= 0
   end
 end
