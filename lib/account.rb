@@ -13,7 +13,7 @@ class Account
     else
       top_up(amount)
       log_transaction(amount, 'deposit', date)
-      puts "Deposited: £#{format("%.2f",amount)}"
+      puts "Deposited: £#{format("%.2f", amount)}"
     end
   end
 
@@ -25,7 +25,7 @@ class Account
     elsif (balance - amount) >= 0
       remove_amount(amount)
       log_transaction(amount, 'withdraw', date)
-      puts "Withdrew: £#{format("%.2f",amount)}"
+      puts "Withdrew: £#{format("%.2f", amount)}"
     end
   end
 
