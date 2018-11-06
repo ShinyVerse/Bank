@@ -9,6 +9,10 @@ Data can be kept in memory (it doesn't need to be stored to a database or anythi
 
 This project has been written in Ruby.
 
+## Prerequisites
+
+Ruby - for installations instructions please go  [here](https://www.ruby-lang.org/en/documentation/installation/)
+
 ## User stories
 
 These have been based on the given brief

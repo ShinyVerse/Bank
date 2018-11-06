@@ -1,7 +1,7 @@
 require_relative 'statement'
 require_relative 'printer'
 
-# Allows users to hold accounts
+# Allow a user to have an account
 class Account
   attr_reader :balance, :acc_statement, :printer
   def initialize(statement = Statement.new, printer = Printer.new)
