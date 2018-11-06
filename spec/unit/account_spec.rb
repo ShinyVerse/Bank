@@ -67,13 +67,13 @@ describe Account do
     end
   end
 
-  describe '#print_statement' do
+  describe '#statement' do
     before(:each) do
       account.deposit(20)
     end
 
     it 'prints out a pretty statement for the user' do
-      expect(account.print_statement).to eq true
+      expect(account.statement).to eq true
     end
   end
 end

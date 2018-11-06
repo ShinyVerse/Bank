@@ -56,7 +56,7 @@ To create an account, deposit in, withdraw
 acc = Account.new
 acc.deposit(50)
 acc.withdraw(15)
-acc.print_statement
+acc.statement
 ```
 If you want to add in a date yourself to a deposit or withdrawal then go nuts!
 

@@ -36,7 +36,7 @@ class Account
     end
   end
 
-  def print_statement
+  def statement
     printer.print(acc_statement.history)
     return true
   end

@@ -31,7 +31,7 @@ describe Account do
 
     it 'returns a statement if user asks for it' do
       account.deposit(30, "12/04/12")
-      expect { account.print_statement }.to output("date  || credit || debit || balance \n12/04/12 || 30.00 ||  || 30.00\n").to_stdout
+      expect { account.statement }.to output("date  || credit || debit || balance \n12/04/12 || 30.00 ||  || 30.00\n").to_stdout
     end
 
     it "returns 'Wrong date format' if validation fails" do
