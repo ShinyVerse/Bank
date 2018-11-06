@@ -1,3 +1,6 @@
+require_relative 'statement'
+require_relative 'printer'
+
 # Allows users to hold accounts
 class Account
   attr_reader :balance, :acc_statement, :printer
@@ -21,6 +24,7 @@ class Account
   end
 
   def withdraw(amount, date = Time.now.strftime('%d/%m/%Y'))
+    date = validate_date(date)
     if illegal_entry? amount
       puts 'Unexpected entry'
     elsif  balance < amount
@@ -65,7 +69,7 @@ class Account
     elsif /\d{2}-\d{2}-\d{2}/ =~ date
       return date.tr("-", '/')
     end
-    
+
     false
   end
 end
