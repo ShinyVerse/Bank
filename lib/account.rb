@@ -8,7 +8,10 @@ class Account
   end
 
   def deposit(amount, date = Time.now.strftime('%d/%m/%Y'))
-    if illegal_entry? amount
+    date = validate_date(date)
+    if !date
+      puts 'Please enter a valid date as a string'
+    elsif illegal_entry? amount
       puts 'Unexpected entry'
     else
       top_up(amount)
@@ -54,5 +57,15 @@ class Account
 
   def illegal_entry?(amount)
     !amount.is_a?(Integer) && !amount.is_a?(Float) || amount <= 0
+  end
+
+  def validate_date date
+    if /\d{2}\/\d{2}\/\d{2}/ =~ date
+      return date
+    elsif /\d{2}-\d{2}-\d{2}/ =~ date
+      return date.tr("-", '/')
+    end
+    
+    false
   end
 end

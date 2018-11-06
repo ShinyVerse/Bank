@@ -6,10 +6,7 @@ describe Account do
   let(:account) { described_class.new }
 
   describe 'User can' do
-    it 'have an account' do
-      expect(account.balance).to eq 0
-    end
-
+    
     it 'can deposit cash into their account' do
       expect { account.deposit(5.50) }.to change { account.balance }.by(5.5)
       expect { account.deposit(5.50) }.to output("Deposited: £5.50\n").to_stdout
@@ -35,6 +32,14 @@ describe Account do
     it 'returns a statement if user asks for it' do
       account.deposit(30, "12/04/12")
       expect { account.print_statement }.to output("date  || credit || debit || balance \n12/04/12 || 30.00 ||  || 30.00\n").to_stdout
+    end
+
+    it "returns 'Wrong date format' if validation fails" do
+      expect { account.deposit(30, "error") }.to output("Please enter a valid date as a string\n").to_stdout
+    end
+
+    it "allows entry of a date in the format: '12-12-12'" do
+      expect { account.deposit(30, "12-12-12") }.to output("Deposited: £30.00\n").to_stdout
     end
   end
 end
