@@ -11,6 +11,11 @@ class Printer
     end
   end
 
+  def accepted_action_message (amount, msg)
+    money = format("%.2f", amount)
+    puts msg === "deposit" ? "Deposited: £#{money}" : "Withdraw: £#{money}"
+  end
+
   private
 
   def empty_str?(entry)
