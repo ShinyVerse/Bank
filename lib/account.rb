@@ -17,7 +17,7 @@ class Account
     elsif illegal_entry? amount
       puts 'Unexpected entry'
     else
-      top_up(amount)
+      @balance += amount
       log_transaction(amount, 'deposit', date)
       puts "Deposited: £#{format("%.2f", amount)}"
     end
@@ -30,7 +30,7 @@ class Account
     elsif  balance < amount
       puts 'Insuffient funds'
     elsif (balance - amount) >= 0
-      remove_amount(amount)
+      @balance -= amount
       log_transaction(amount, 'withdraw', date)
       puts "Withdrew: £#{format("%.2f", amount)}"
     end
@@ -42,14 +42,6 @@ class Account
   end
 
   private
-
-  def remove_amount(amount)
-    @balance -= amount
-  end
-
-  def top_up(amount)
-    @balance += amount
-  end
 
   def log_transaction(amount, type, date)
     if type == 'deposit'

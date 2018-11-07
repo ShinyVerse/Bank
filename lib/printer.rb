@@ -1,4 +1,4 @@
-# Prints out messages nicely for the user
+# Prints out any messages for the user
 class Printer
   def print(statement_log)
     puts 'date  || credit || debit || balance '
