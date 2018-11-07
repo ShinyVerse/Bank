@@ -3,7 +3,7 @@ require_relative 'printer'
 
 # Allow a user to have an account
 class Account
-  attr_reader :balance, :acc_statement, :printer
+  attr_reader :balance, :printer
   def initialize(statement = Statement.new, printer = Printer.new)
     @balance = 0
     @acc_statement = statement
@@ -37,7 +37,7 @@ class Account
   end
 
   def statement
-    printer.print(acc_statement.history)
+    printer.print(@acc_statement.history)
     return true
   end
 
