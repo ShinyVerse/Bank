@@ -13,24 +13,19 @@ class Account
   def deposit(amount, date = Time.now.strftime('%d/%m/%Y'))
     date = validate_date(date)
     fail 'Unexpected entry' if illegal_entry? amount
-    if !date
-      puts 'Please enter a valid date as a string'
-    else
-      @balance += amount
-      log_transaction(amount, 'deposit', date)
-      puts "Deposited: £#{format("%.2f", amount)}"
-    end
+    fail 'Please enter a valid date as a string' if !date
+    @balance += amount
+    log_transaction(amount, 'deposit', date)
+    @printer.action_message(amount, "deposit")
   end
 
   def withdraw(amount, date = Time.now.strftime('%d/%m/%Y'))
     date = validate_date(date)
     fail 'Unexpected entry' if illegal_entry? amount
-    fail 'Insuffient funds' if  balance < amount
-    if (balance - amount) >= 0
-      @balance -= amount
-      log_transaction(amount, 'withdraw', date)
-      puts "Withdrew: £#{format("%.2f", amount)}"
-    end
+    fail 'Insuffient funds' if balance < amount
+    @balance -= amount
+    log_transaction(amount, 'withdraw', date)
+    @printer.action_message(amount, "withdraw")
   end
 
   def statement

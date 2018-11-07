@@ -22,7 +22,6 @@ describe Statement do
     end
   end
 
-
   describe '#deposit' do
     it 'expects to log a deposit' do
       statement.deposit(30, 1000, '12/04/12')

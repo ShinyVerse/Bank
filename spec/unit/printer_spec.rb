@@ -26,13 +26,13 @@ describe Printer do
     end
   end
 
-  describe '#accepted_action_message' do
+  describe '#action_message' do
     it 'returns deposit message' do
-      expect { printer.accepted_action_message(50, "deposit") }.to output("Deposited: £50.00\n").to_stdout
+      expect { printer.action_message(50, "deposit") }.to output("Deposited: £50.00\n").to_stdout
     end
 
     it 'returns a withdraw message' do
-        expect { printer.accepted_action_message(50, "withdraw") }.to output("Withdraw: £50.00\n").to_stdout
+      expect { printer.action_message(50, "withdraw") }.to output("Withdraw: £50.00\n").to_stdout
     end
   end
 end
