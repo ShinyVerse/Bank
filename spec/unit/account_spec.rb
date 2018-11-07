@@ -46,14 +46,13 @@ describe Account do
     end
 
     it 'gives the user a message if not enough in account' do
-      expect { account.withdraw(25) }.to output("Insuffient funds\n").to_stdout
+      expect { account.withdraw(25) }.to raise_error("Insuffient funds")
     end
 
     it 'gives message insuffient funds if entered in 0, negative or non-Int' do
-      expect { account.withdraw(0) }.to output("Unexpected entry\n").to_stdout
-      expect { account.withdraw(-5) }.to output("Unexpected entry\n").to_stdout
-      expect { account.withdraw({}) }.to output("Unexpected entry\n").to_stdout
-      expect(account.balance).to eq 20
+      expect { account.withdraw(0) }.to raise_error("Unexpected entry")
+      expect { account.withdraw(-5) }.to raise_error("Unexpected entry")
+      expect { account.withdraw({}) }.to raise_error("Unexpected entry")
     end
   end
 

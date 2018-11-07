@@ -24,11 +24,9 @@ class Account
 
   def withdraw(amount, date = Time.now.strftime('%d/%m/%Y'))
     date = validate_date(date)
-    if illegal_entry? amount
-      puts 'Unexpected entry'
-    elsif  balance < amount
-      puts 'Insuffient funds'
-    elsif (balance - amount) >= 0
+    fail 'Unexpected entry' if illegal_entry? amount
+    fail 'Insuffient funds' if  balance < amount
+    if (balance - amount) >= 0
       @balance -= amount
       log_transaction(amount, 'withdraw', date)
       puts "Withdrew: £#{format("%.2f", amount)}"
