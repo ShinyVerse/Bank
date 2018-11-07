@@ -16,12 +16,6 @@ describe Account do
   end
   let(:account) { described_class.new(statement, printer) }
 
-  describe 'An account instance' do
-    it 'has a balance' do
-      expect(account.balance).to eq 0
-    end
-  end
-
   describe '#deposit' do
     it 'allows user to deposit money into their account' do
       account.deposit(5)

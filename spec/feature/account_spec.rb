@@ -6,11 +6,12 @@ require 'printer'
 describe 'Account API' do
   let(:account) { Account.new }
   it 'user can deposit, withdraw and get a statement' do
-    date = Time.now.strftime("%d/%m/%Y")
-    expect { account.deposit(5.50) }.to change { account.balance }.by(5.5)
-    expect { account.withdraw(3.50) }.to change { account.balance }.by(-3.5)
+    account.deposit(1000, "10-01-2012")
+    account.deposit(2000, "13-01-2012")
+    account.withdraw(500, "14-01-2012")
     expect { account.statement }.to output("date  || credit || debit || balance \n"\
-                                           "#{date} ||  || 3.50 || 2.00\n"\
-                                           "#{date} || 5.50 ||  || 5.50\n").to_stdout
+                                           "14/01/2012 ||  || 500.00 || 2500.00\n"\
+                                           "13/01/2012 || 2000.00 ||  || 3000.00\n"\
+                                           "10/01/2012 || 1000.00 ||  || 1000.00\n").to_stdout
   end
 end
