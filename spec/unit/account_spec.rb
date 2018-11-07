@@ -18,20 +18,17 @@ describe Account do
 
   describe '#deposit' do
     it 'allows user to deposit money into their account' do
-      account.deposit(5)
-      expect(account.balance).to eq 5
+      expect { account.deposit(5) }.to change { account.balance }.by(5)
     end
 
     it 'gives message of insuffient funds if user enters negative, 0 or non-Int' do
-      expect { account.deposit(0) }.to output("Unexpected entry\n").to_stdout
-      expect { account.deposit(-5) }.to output("Unexpected entry\n").to_stdout
-      expect { account.deposit({}) }.to output("Unexpected entry\n").to_stdout
-      expect(account.balance).to eq 0
+      expect { account.deposit(0) }.to raise_error("Unexpected entry")
+      expect { account.deposit(-5) }.to raise_error("Unexpected entry")
+      expect { account.deposit({}) }.to raise_error("Unexpected entry")
     end
 
     it 'allows float numbers' do
-      account.deposit(5.50)
-      expect(account.balance).to eq 5.50
+      expect { account.deposit(5.50)}.to change { account.balance }.by(5.5)
     end
   end
 
@@ -41,12 +38,11 @@ describe Account do
     end
 
     it 'allows user to withdraw their money' do
-      account.withdraw(5)
-      expect(account.balance).to eq 15
+      expect { account.withdraw(5) }.to change { account.balance }.by(-5)
     end
+
     it 'allows float numbers' do
-      account.withdraw(4.50)
-      expect(account.balance).to eq 15.50
+      expect { account.withdraw(4.5) }.to change { account.balance }.by(-4.5)
     end
 
     it 'gives the user a message if not enough in account' do

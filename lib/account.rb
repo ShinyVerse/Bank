@@ -12,10 +12,9 @@ class Account
 
   def deposit(amount, date = Time.now.strftime('%d/%m/%Y'))
     date = validate_date(date)
+    fail 'Unexpected entry' if illegal_entry? amount
     if !date
       puts 'Please enter a valid date as a string'
-    elsif illegal_entry? amount
-      puts 'Unexpected entry'
     else
       @balance += amount
       log_transaction(amount, 'deposit', date)
